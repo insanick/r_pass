@@ -2,6 +2,16 @@ use std::io::{self, Write};
 use rand::Rng;
 
 /// Quickly creates a random string of characters for use
+/// 
+/// # Example
+/// 
+/// ```
+/// use r_pass;
+/// 
+/// fn main() {
+///     r_pass::quick_build();
+/// }
+/// ```
 pub fn quick_build() {
     let mut rng = rand::rng();
     let mut current_char: char;
