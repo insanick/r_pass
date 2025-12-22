@@ -11,6 +11,7 @@
 
 use std::io::{self, Write};
 use rand::Rng;
+use sim_put::Input;
 /// Quickly creates a random string of characters for use
 /// 
 /// # Example
@@ -42,7 +43,72 @@ pub fn quick_build() {
 
 /// Shows the usage prompt if required.
 pub fn show_help() {
-    println!("Usage: ./r_pass\n");
-    println!("Creates a quick secure* secret key.");
+    println!("Usage: ./r_pass [options]\n");
+    println!("\n[r_pass] will help create a password based on prompts or options[future-feature].");
+    println!("When used without flags or prompts, creates a quick secure* secret key.");
     println!("*[16 character string, alphanumeric and symbols]")
+}
+
+
+#[derive(Debug)]
+enum Complexity {
+    Simple,
+    Pin,
+    Complex,
+}
+
+#[derive(Debug)]
+pub struct Password {
+    password: Vec<char>,
+    length: u8,
+    complexity: Complexity
+}
+
+impl Password {
+    pub fn build() -> Password {
+        Password {
+            password: Vec::new(),
+            length: Password::get_length(),
+            complexity: Password::get_complexity()
+        }
+    }
+
+    fn get_length() -> u8 {
+        
+        let new_length = Input::prompted_input("Password length");
+
+        let new_length: u8 = new_length
+            .trim()
+            .parse()
+            .expect("Not a number!");
+
+        new_length
+    }
+
+    fn get_complexity() -> Complexity {
+        Password::complexity_prompt();
+
+        let choice = Input::prompted_input("Complexity");
+
+
+
+        let choice: u8 = choice.trim().parse().expect("not a digit");
+
+        match choice {
+            1 => Complexity::Simple,
+            2 => Complexity::Complex,
+            3 => Complexity::Pin,
+            _ => {
+                println!("Not an option!");
+                Password::get_complexity()
+            }
+        }
+    }
+
+    fn complexity_prompt() {
+        println!("1) Simple (Chars and Nums)");
+        println!("2) Complex (Adds Symbols)");
+        println!("3) Pin Mode (Digits only)");
+        }
+
 }
