@@ -12,6 +12,12 @@ use rand::Rng;
 ///     r_pass::quick_build();
 /// }
 /// ```
+/// 
+/// # Panics
+/// This function will panic with an except() used on io::stdout().flush()
+/// 
+/// This will be addresses gracefully in a future release 
+/// 
 pub fn quick_build() {
     let mut rng = rand::rng();
     let mut current_char: char;
