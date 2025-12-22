@@ -1,7 +1,7 @@
 use std::io::{self, Write};
 use rand::Rng;
 
-
+/// Quickly creates a random string of characters for use
 pub fn quick_build() {
     let mut rng = rand::rng();
     let mut current_char: char;
@@ -14,7 +14,7 @@ pub fn quick_build() {
 }
 
 
-
+/// Shows the usage prompt if required.
 pub fn show_help() {
     println!("Usage: ./r_pass\n");
     println!("Creates a quick secure* secret key.");
