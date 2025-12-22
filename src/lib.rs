@@ -1,6 +1,16 @@
+//! # r_pass
+//! 
+//! `r_pass` creates a secure* password string and prints it to the terminal for use. 
+//! 
+//! Future releases will contain an interactive mode as well as flags to provide for quick configuration of a password. 
+//! 
+//! # Usage
+//! 
+//! `./r_pass`
+
+
 use std::io::{self, Write};
 use rand::Rng;
-
 /// Quickly creates a random string of characters for use
 /// 
 /// # Example
