@@ -10,8 +10,7 @@ fn main() {
         _ => {
             //Show help menu
             r_pass::show_help();
-            }
-            
+            }            
     }
         
 }
