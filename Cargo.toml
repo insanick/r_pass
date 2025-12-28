@@ -1,6 +1,6 @@
 [package]
 name = "r_pass"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 description = "A program to quickly create a secure* password"
 license = "GPL-3.0+"
